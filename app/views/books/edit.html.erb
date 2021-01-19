@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+    </div>
+    <div class="col-md-5 mt-4">
+      <h1>Editing Book</h1>
+      <% if @book.errors.any? %>
+        <%= @book.errors.count %>error
+        <% @book.errors.full_messages.each do |message| %>
+          <%= message %>
+        <% end %>
+      <% end %>
+      <%= form_with model:@book, local:true do |f| %>
+        <label for="inputTitle">Title</label><br>
+        <%= f.text_field :title, autofocus: true, id:"inputTitle", placeholder:""%><br>
+        <label for="inputBody">Body</label><br>
+        <%= f.text_field :body, autofocus: true, id:"inputBody", placeholder:""%><br>
+        <%= f.submit "Update Book", class:"btn btn-success mt-2" %>
+      <% end %>
+      <%= link_to "Show",book_path(@book) %>
+      |
+      <%= link_to "Back",books_path %>
+    </div>
+  </div>
+</div>
